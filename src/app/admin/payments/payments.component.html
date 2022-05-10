@@ -1,0 +1,43 @@
+<div class="container mt-5" *ngIf="noPayment">
+    <h5 class="alert alert-warning">{{emptyMessage}}</h5>
+</div>
+<div class="container" *ngIf="!noPayment">
+    <h1>Payments History</h1>
+    <!-- <div class="alert alert-success" *ngIf="deleteMessage">{{deleteMessage}}</div> -->
+    <table class="table" >
+        <thead>
+            <tr>
+                <th>Sr. No</th>
+                <th>Username</th>
+                <th>Order ID</th>
+                <th>Payment ID</th>
+                <th>Card Type</th>
+                <th>Card Number</th>
+                <th>Expiry Month</th>
+                <th>Expiry Year</th>
+                <th>CVV</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of payments | paginate:{itemsPerPage: 10, currentPage:p} ; let i = index ">
+                <td>{{i+1}}</td>
+                <td>{{order.username}}</td>
+                <td>{{order.orderId}}</td>
+                <td>{{order.paymentId}}</td>
+                <td>{{order.cardType}}</td>
+                <td>{{order.cardNumber}}</td>
+                <td>{{order.expiryMonth}}</td>
+                <td>{{order.expiryYear}}</td>
+                <td>{{order.cvv }}</td>
+                <!-- <td><button (click)="updateTodo(todo.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deleteTodo(todo.id)" class="btn btn-warning">Delete</button></td> -->
+            </tr>
+        </tbody>
+    </table>
+            
+    <pagination-controls class="d-flex justify-content-end" (pageChange)="p=$event"></pagination-controls>
+
+    <!-- <div class="row">
+        <button (click)="addTodo()" class="btn btn-primary">Add Todo</button>
+    </div> -->
+</div>

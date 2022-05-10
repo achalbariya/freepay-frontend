@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row mt-5">
+    <h1>Admin Panel</h1>
+  </div>
+  <div class="container border border-dark">
+    <div class="row border border-dark">
+        <h3 class="col nav-link text-dark">Total Amount recieved - Rs.{{totalAmount}}</h3>
+      </div>
+      <div class="row border border-dark">
+        <h3 class="col-4 nav-link text-dark">Total Orders - {{totalOrders}} - </h3>
+        <a routerLink="/admin/orders" class="col-4 nav-link"
+        ><h3>All Orders list</h3></a>
+      </div>
+      <div class="row border border-dark">
+        <h3 class="col-4 nav-link text-dark">Total Payments - {{totalPayments}} - </h3>
+        <a routerLink="/admin/payments" class="col-4 nav-link"
+          ><h3>All Payments list</h3></a
+        >
+      </div> 
+      <div class="row border border-dark">
+        <h3 class="col-4 nav-link text-dark">Total Users Registered - {{totalUsers}} - </h3>
+        <a routerLink="/admin/users" class="col-4 nav-link"
+          ><h3>All Users list</h3></a
+        >
+      </div>
+  </div>
+  <!-- <div class="container">
+    <div class="row navbar navbar-expand-md">
+      <ul class="navbar-nav">
+        <li class="border border-dark p-2">
+          <h3>Total Orders - {{totalOrders}} - </h3>
+          <a routerLink="/admin/orders" class="nav-link ml-4"
+          ><h3>All Orders list</h3></a
+        >
+        </li>
+        <li class="border border-dark p-2">
+          <h3>Total Payments - {{totalPayments}} - </h3>
+          <a routerLink="/admin/payments" class="nav-link ml-4"
+            ><h3>All Payments list</h3></a
+          >
+        </li>
+        <li class="border border-dark p-2">
+          <h3>Total Users Registered - {{totalUsers}} - </h3>
+          <a routerLink="/admin/users" class=" nav-link ml-4"
+            ><h3>All Users list</h3></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div> -->
+</div>

@@ -1,0 +1,87 @@
+<div class="container mt-5">
+    <div style="background-color: #eee;" class="w-100 p-4 d-flex justify-content-center pb-4 border">
+      <form #dthForm="ngForm" (ngSubmit)="!dthForm.invalid && rechargePayment()">
+  
+        <p class="text-center h5 fw-bold mb-5 mx-1 mx-md-4 mt-4">Recharge DTH or TV
+            <img src="assets/images/logo/dth.png" alt="Mobile" class="ml-4" height="50">
+        </p>
+
+        <div
+        class="alert alert-warning"
+        *ngIf="dthForm.dirty && dthForm.invalid"
+      >
+        Please fill all details before payment
+      </div>
+
+      <div
+      class="alert alert-warning"
+      *ngIf="numberForm.dirty && numberForm.invalid"
+    >
+      Enter Valid Customer ID with 10 digits
+    </div>
+  
+        <div class="form-outline mb-4 row">
+          <label class="form-label" >Customer ID</label>
+          <input
+          type="text"
+          minlength="10"
+          name="number"
+          (keypress)="numberOnly($event)"
+          maxlength="10"
+          class="form-control"
+          required="required"
+          [(ngModel)]="number"
+          #numberForm="ngModel"
+          />
+        </div>
+
+        <div
+        class="alert alert-warning"
+        *ngIf="operatorForm.dirty && operatorForm.invalid"
+      >
+        Enter Select operator from dropdown
+      </div>
+
+      <div class="form-outline mb-4 row">
+        <label class="form-label">Operator</label>
+        <select
+          class="ml-2 mr-4"
+          [(ngModel)]="operator"
+          #operatorForm="ngModel"
+          name="operator"
+          required="required"
+        >
+          <option *ngFor="let op of operators" [ngValue]="op">{{ op }}</option>
+        </select>
+      </div>
+  
+      <div
+      class="alert alert-warning"
+      *ngIf="amountForm.dirty && amountForm.invalid"
+    >
+      Enter Select amount from dropdown
+    </div>
+
+    <div class="form-outline mb-4 row">
+      <label class="form-label">Amount</label>
+      <select
+        class="ml-2 mr-4"
+        [(ngModel)]="amount"
+        #amountForm="ngModel"
+        name="amount"
+        required="required"
+      >
+        <option *ngFor="let am of amounts" [ngValue]="am">
+          Rs. {{ am }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block mb-4">
+      Proceed to Recharge
+    </button>
+      </form>
+    </div>
+  </div>
+  
+  

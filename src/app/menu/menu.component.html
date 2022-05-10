@@ -1,0 +1,47 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark text-light">
+        <div><a *ngIf="!basicAuthenticationService.isUserLoggedIn()" class="navbar-brand">
+            <img src="assets/images/logo/fpp.png" alt="fp" class="m-2" height="30">
+            FreePay</a>
+        </div>
+        <div><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/welcome/achal" class="navbar-brand">
+            <img src="assets/images/logo/fpp.png" alt="fp" class="m-2" height="30">
+            FreePay</a>
+        </div>
+        <ul class="navbar-nav">
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn() && basicAuthenticationService.getAuthenticatedUser() == 'admin'" routerLink="/admin" class="nav-link">Admin</a></li>
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/mobile" class="nav-link">Mobile</a></li>
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/dth" class="nav-link">DTH</a></li>
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/broadband" class="nav-link">Broadband</a></li>
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/electricity" class="nav-link">Electricity</a></li>
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/gas" class="nav-link">Gas</a></li>
+        </ul>
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/orders" class="nav-link">Orders</a></li>
+            <li class="nav-item dropdown" ngbDropdown *ngIf="basicAuthenticationService.isUserLoggedIn()">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggl>
+                    {{basicAuthenticationService.getAuthenticatedUser() | titlecase}}</a>
+                <ul class="dropdown-menu bg-dark text-light" ngbDropdownMenu aria-labelledby="navbarScrollingDropdown">
+                    <li ngbDropdownItem>
+                        <a class="bg-dark text-light dropdown-item" routerLink="/logout">Logout</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown mr-4" ngbDropdown *ngIf="!basicAuthenticationService.isUserLoggedIn()">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggl>
+                    Login/SignUp</a>
+                <ul class="dropdown-menu bg-dark text-light" ngbDropdownMenu aria-labelledby="navbarScrollingDropdown">
+                    <li ngbDropdownItem><a routerLink="/login" class="bg-dark text-light nav-link">Login</a></li>
+                    <li ngbDropdownItem><a routerLink="/register" class="bg-dark text-light nav-link">SignUp</a></li>
+                </ul>
+            </li>
+            &nbsp;&nbsp;&nbsp;
+        </ul>
+    </nav>
+</header>
+
+<!-- <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" class="nav-link">{{basicAuthenticationService.getAuthenticatedUser() | titlecase}}</a></li> -->
+            <!-- <li><a *ngIf="!basicAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li> -->
+            <!-- <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li> -->
+            <!-- <li><a *ngIf="!basicAuthenticationService.isUserLoggedIn()" routerLink="/register" class="nav-link">SignUp</a></li> -->
+            

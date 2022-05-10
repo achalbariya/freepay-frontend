@@ -1,0 +1,127 @@
+<div class="container mt-5 mb-5">
+  <div
+    style="background-color: #eee"
+    class="w-100 p-4 d-flex justify-content-center pb-4 border"
+  >
+    <form
+      #mobileForm="ngForm"
+      (ngSubmit)="!mobileForm.invalid && rechargePayment()"
+    >
+      <p class="text-center h5 fw-bold mb-2 mx-1 mx-md-4 mt-4">
+        Recharge or Pay Mobile Bill
+        <img
+          src="assets/images/logo/mobile.png"
+          alt="Mobile"
+          class="ml-4"
+          height="50"
+        />
+      </p>
+
+      <div
+        class="alert alert-warning"
+        *ngIf="mobileForm.dirty && mobileForm.invalid"
+      >
+        Please fill all details before payment
+      </div>
+
+      <div
+        class="alert alert-warning"
+        *ngIf="orderTypeForm.dirty && orderTypeForm.invalid"
+      >
+        Please Select Prepaid or Postpaid
+      </div>
+
+      <div class="form-outline mb-4 row">
+        <label class="col form-label ml-2 mr-4">
+          <input
+            type="radio"
+            name="orderType"
+            value="Prepaid"
+            required="required"
+            [(ngModel)]="orderType"
+            #orderTypeForm="ngModel"
+            checked
+          />&nbsp;Prepaid
+        </label>
+        <label class="col form-label ml-2 mr-4">
+          <input
+            type="radio"
+            name="orderType"
+            value="Postpaid"
+            required="required"
+            [(ngModel)]="orderType"
+            #orderTypeForm="ngModel"
+          />&nbsp;Postpaid
+        </label>
+      </div>
+
+      <div
+        class="alert alert-warning"
+        *ngIf="numberForm.dirty && numberForm.invalid"
+      >
+        Enter Valid Mobile number with 10 digits
+      </div>
+
+      <div class="form-outline mb-4 row">
+        <label class="form-label">Mobile Number</label>
+        <input
+          type="text"
+          minlength="10"
+          name="number"
+          (keypress)="numberOnly($event)"
+          maxlength="10"
+          class="form-control"
+          required="required"
+          [(ngModel)]="number"
+          #numberForm="ngModel"
+        />
+      </div>
+
+      <div
+        class="alert alert-warning"
+        *ngIf="operatorForm.dirty && operatorForm.invalid"
+      >
+        Enter Select operator from dropdown
+      </div>
+
+      <div class="form-outline mb-4 row">
+        <label class="form-label">Operator</label>
+        <select
+          class="ml-2 mr-4"
+          [(ngModel)]="operator"
+          #operatorForm="ngModel"
+          name="operator"
+          required="required"
+        >
+          <option *ngFor="let op of operators" [ngValue]="op">{{ op }}</option>
+        </select>
+      </div>
+
+      <div
+        class="alert alert-warning"
+        *ngIf="amountForm.dirty && amountForm.invalid"
+      >
+        Enter Select amount from dropdown
+      </div>
+
+      <div class="form-outline mb-4 row">
+        <label class="form-label">Amount</label>
+        <select
+          class="ml-2 mr-4"
+          [(ngModel)]="amount"
+          #amountForm="ngModel"
+          name="amount"
+          required="required"
+        >
+          <option *ngFor="let am of amounts" [ngValue]="am">
+            Rs. {{ am }}
+          </option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block mb-4">
+        Proceed to Recharge
+      </button>
+    </form>
+  </div>
+</div>

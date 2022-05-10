@@ -1,0 +1,73 @@
+<div class="container mt-5">
+  <h1 class="center"></h1>
+  <div style="background-color: #eee;" class="w-100 d-flex p-4 justify-content-center pb-4 border">
+    <form (ngSubmit)="!loginForm.invalid && handleJWTAuthLogin()" #loginForm="ngForm">
+      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+      <div class="alert alert-warning text-danger" *ngIf="invalidLogin"> {{ errorMessage }}</div>
+      <!-- Username input -->
+      <fieldset class="form-group mb-2 row">
+        <label class="form-label" >Username</label>
+        <input
+          type="text" required="required" minlength="5"
+          name="username" #usernameForm="ngModel"
+          class="form-control"
+          [(ngModel)]="username"
+        />
+      </fieldset>
+      <div class="alert alert-warning" *ngIf="usernameForm.dirty && usernameForm.invalid">Enter Valid Values</div>
+      <!-- Password input -->
+      <fieldset class="form-group mb-4 row">
+        <label class="form-label" >Password</label>
+        <input
+          type="password" required="required" minlength="3"
+          name="password" #passwordForm="ngModel"
+          class="form-control"
+          [(ngModel)]="password"
+        />
+      </fieldset>
+      <div class="alert alert-warning" *ngIf="passwordForm.dirty && passwordForm.invalid">Enter Atleast 8 characters</div>
+      <!-- 2 column grid layout for inline styling -->
+      <!-- <div class="row mb-4">
+        <div class="col d-flex justify-content-center">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="form2Example31"
+              checked
+            />
+            <label class="form-check-label" for="form2Example31">
+              Remember me
+            </label>
+          </div>
+        </div>
+
+        <div class="col">
+          <a href="#!">Forgot password?</a>
+        </div>
+      </div> -->
+
+      <!-- Submit button -->
+      <div class="row">
+        <button
+          type="submit"
+          class="col btn btn-primary btn-block mb-4">
+          Sign in<!-- (click)="handleJWTAuthLogin()" -->
+        </button>
+        <div class="col text-center">
+          <p>Not a member? <a routerLink="/register">Register</a></p>
+        </div>
+      </div>
+      
+      
+      
+
+      <!-- Register buttons -->
+      
+    </form>
+  </div>
+</div>
+
+
+
